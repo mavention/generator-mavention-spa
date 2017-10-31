@@ -2,6 +2,9 @@ import * as angular from 'angular';
 
 import {hello} from './app/hello';
 <% if (router === 'uirouter') { -%>
+//Renamed packages for angular-ui-router
+import '@uirouter/angularjs';
+//Types needed for build
 import * as uiRouter from 'angular-ui-router';
 import routesConfig from './routes';
 <% } -%>
