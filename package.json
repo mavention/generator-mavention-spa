@@ -1,14 +1,13 @@
 {
-  "name": "generator-fountain-angular1",
+  "name": "generator-mavention-spa",
   "version": "1.0.0",
-  "description": "Yeoman Fountain generator to scaffold a webapp with Angular 1 written in ES6 (Babel), TypeScript through Webpack or SystemJS including tools Gulp 4, ESLint, Browsersync and Karma",
+  "description": "Yeoman MAvention generator to scaffold a SPA with Angular 1 written in ES6 (Babel), TypeScript through Webpack including tools Gulp 4, ESLint, Browsersync and Karma",
   "homepage": "http://fountainjs.io/",
-  "repository": "fountainjs/generator-fountain-angular1",
-  "author": "The Fountain Team",
+  "repository": "mavention/generator-mavention-spa",
+  "author": "Mavention",
   "contributors": [
-    "Matthieu Lux <matthieu.lux@gmail.com> (http://swiip.github.io/)",
-    "Mehdy Dara <mdara@eleven-labs.com> (http://eleven-labs.com/)",
-    "Micael Mbagira <micael.mbagira@icloud.com> (http://micaelmbagira.github.io)"
+    "Robert Jaakke <robert.jaakke@mavention.nl> (http://www.mavention.nl/)",
+    "Albert-Jan Schot Jaakke <albert.jan.schot@mavention.nl> (http://www.mavention.nl/)"
   ],
   "main": "index.js",
   "keywords": [
@@ -23,7 +22,8 @@
   ],
   "dependencies": {
     "fountain-generator": "^1.0.0",
-    "generator-fountain-gulp": "^1.0.0"
+    "generator-fountain-gulp": "^1.0.0",
+    "generator-fountain-webpack": "fountaintjs/generator-fountain-webpack"
   },
   "devDependencies": {
     "ava": "^0.18.2",
