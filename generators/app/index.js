@@ -57,7 +57,7 @@ module.exports = fountain.Base.extend({
         angular: '^1.6.2'
       },
       devDependencies: {
-        '@types/angular': '^1.6.6',
+        '@types/angular': '^1.6.36',
         '@types/angular-mocks': '^1.5.9',
         '@types/jquery': '^2.0.40',
         'angular-mocks': '^1.6.2',
@@ -67,10 +67,10 @@ module.exports = fountain.Base.extend({
     if (this.props.router === 'uirouter') {
       this.mergeJson('package.json', {
         dependencies: {
-          'angular-ui-router': '1.0.0-beta.3'
+          '@uirouter/angularjs': '^1.0.10'
         },
         devDependencies: {
-          '@types/angular-ui-router': '^1.1.36'
+          '@types/angular-ui-router': '^1.1.40'
         }
       });
     }

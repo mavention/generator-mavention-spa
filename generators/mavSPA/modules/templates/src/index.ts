@@ -2,7 +2,7 @@ import * as angular from 'angular';
 
 import {hello} from './app/hello';
 <% if (router === 'uirouter') { -%>
-import 'angular-ui-router';
+import * as uiRouter from 'angular-ui-router';
 import routesConfig from './routes';
 <% } -%>
 
