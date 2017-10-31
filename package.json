@@ -23,7 +23,7 @@
   "dependencies": {
     "fountain-generator": "^1.0.0",
     "generator-fountain-gulp": "^1.0.0",
-    "generator-fountain-webpack": "fountainjs/generator-fountain-webpack"
+    "generator-fountain-webpack": "mavention/generator-fountain-webpack"
   },
   "devDependencies": {
     "ava": "^0.18.2",
