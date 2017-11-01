@@ -5,48 +5,30 @@ const version = require('../../package.json').version;
 
 module.exports = fountain.Base.extend({
   props: {
+    framework: 'angular1',
     modules: 'webpack',
     js: 'typescript',
     ci: 'jenkins',
     css: 'scss',
+    router: 'uirouter'
   },
-  
-  prompting: {
-    fountain() {
-      this.options.framework = 'angular1';
-      //return this.fountainPrompting();
-    },
 
-    sample() {
-      this.option('sample', {type: Boolean, required: false});
+  webconfig() {
+    const prompts = [{
+      when: !this.options.sample,
+      type: 'input',
+      name: 'tenantName',
+      message: 'What is the tenant domainname of the app registration?'
+    }, {
+      when: !this.options.router,
+      type: 'input',
+      name: 'appId',
+      message: 'What is the application id of the app registration?'
+    }];
 
-      const prompts = [{
-        when: !this.options.sample,
-        type: 'list',
-        name: 'sample',
-        message: 'Do you want a sample app?',
-        choices: [
-          {name: 'Just a Hello Mavention', value: 'mavSPA'},
-          {name: 'A working landing page', value: 'techs'},
-          {name: 'Just a Hello World', value: 'hello'},
-          {name: 'TodoMVC', value: 'todoMVC'}
-        ]
-      }, {
-        when: !this.options.router,
-        type: 'list',
-        name: 'router',
-        message: 'Would you like a router?',
-        choices: [
-          // {name: 'Angular Component Router (Angular 2 router)', value: 'router'},
-          {name: 'Angular UI Router', value: 'uirouter'},
-          {name: 'None', value: 'none'}
-        ]
-      }];
-
-      return this.prompt(prompts).then(props => {
-        Object.assign(this.props, props);
-      });
-    }
+    return this.prompt(prompts).then(props => {
+      Object.assign(this.props, props);
+    });
   },
 
   configuring() {
@@ -54,26 +36,20 @@ module.exports = fountain.Base.extend({
     this.config.set('props', this.props);
     this.mergeJson('package.json', {
       dependencies: {
-        angular: '^1.6.2'
+        '@uirouter/angularjs': '^1.0.10',
+        'adal-angular': '^1.0.15',
+        angular: '^1.6.6'
       },
       devDependencies: {
+        '@types/adal': '^1.0.29',
         '@types/angular': '^1.6.36',
-        '@types/angular-mocks': '^1.5.9',
+        '@types/angular-mocks': '^1.5.11',
+        '@types/angular-ui-router': '^1.1.40',
         '@types/jquery': '^2.0.40',
-        'angular-mocks': '^1.6.2',
+        'angular-mocks': '^1.6.6',
         'gulp-angular-templatecache': '^2.0.0'
       }
     });
-    if (this.props.router === 'uirouter') {
-      this.mergeJson('package.json', {
-        dependencies: {
-          '@uirouter/angularjs': '^1.0.10'
-        },
-        devDependencies: {
-          '@types/angular-ui-router': '^1.1.40'
-        }
-      });
-    }
   },
 
   composing() {
@@ -84,19 +60,43 @@ module.exports = fountain.Base.extend({
       ci: this.props.ci,
       css: this.props.css,
       router: this.props.router,
-      sample: this.props.sample,
       skipInstall: this.props.skipInstall,
       skipCache: this.props.skipCache
     };
 
-    this.composeWith(require.resolve(`../${this.props.sample}/${this.props.modules === 'inject' ? 'inject' : 'modules'}`), options);
     this.composeWith(require.resolve('generator-fountain-gulp/generators/app'), options);
   },
 
   writing() {
-    if (this.props.router === 'uirouter') {
-      this.copyTemplate('src/routes.js', 'src/routes.js', this.props);
-    }
-    this.copyTemplate('src/index.html', 'src/index.html', {router: this.props.router});
+    const files = [
+      'conf/browsersync-dist.conf.js',
+      'conf/browsersync.conf.js',
+      'conf/webpack-dist.conf.js',
+      'conf/webpack.conf.js',
+      'src/adalconfig.ts',
+      'src/config.ts',
+      'src/index.ts',
+      'src/index.scss',
+      'src/index.html',
+      'src/frameRedirect.ts',
+      'src/frameRedirect.html',
+      'src/routes.ts',
+      'src/app/about.ts',
+      'src/app/about.spec.ts',
+      'src/app/about.html',
+      'src/app/hello.ts',
+      'src/app/hello.spec.ts',
+      'src/app/hello.html'
+    ];
+
+    files.forEach(file => {
+      const templateUrl = file.replace(
+        /^src\/(.*\/[^.]*).*$/,
+        `$1.html`
+      );
+      this.copyTemplate(file, file, {templateUrl});
+    });
+
+    this.copyTemplate('src/web.config.js', 'src/web.config.js', {tenantName: this.props.tenantName, appId: this.props.appId});
   }
 });
