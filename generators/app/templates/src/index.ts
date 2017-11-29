@@ -2,6 +2,7 @@ import * as angular from 'angular';
 
 import appConfig from './config';
 
+import 'adal-angular/lib/adal'; // adal library
 import 'adal-angular/lib/adal-angular'; // angular library
 import * as adal from 'adal'; // @types library
 
