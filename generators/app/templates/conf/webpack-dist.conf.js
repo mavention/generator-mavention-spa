@@ -64,7 +64,7 @@ module.exports = {
         enforce: 'pre'
       },
       {
-        test: /\.(css|csss)$/,
+        test: /\.(css|scss)$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [{
