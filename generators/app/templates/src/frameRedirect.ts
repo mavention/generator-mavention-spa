@@ -1,21 +1,21 @@
 import * as angular from 'angular';
 
-import appConfig from './config';
+import appConfig from './config/app.config';
+import adalConfig from './config/app.config.adal';
+import routeConfig from './config/app.config.routes';
 
-import 'adal-angular/lib/adal-angular'; // angular library
-import * as adal from 'adal'; // @types library
+import '@uirouter/core';
+import '@uirouter/angularjs';
 
-import adalConfig from './adalconfig';
-
-import '@uirouter/angularjs'; // angular library
-import '@uirouter/angularjs/release/stateEvents';
-import * as uiRouter from 'angular-ui-router'; // @types library
-import routesConfig from './routes';
-
-export const app: string = 'app';
+import 'adal-angular/lib/adal'; // adal library
+import 'adal-angular/lib/adal-angular'; // adal-angular library
+import * as adal from 'adal-angular'; // @types library
 
 angular
-.module(app, ['AdalAngular', 'ui.router', 'ui.router.state.events'])
+  .module('app', [
+    'AdalAngular',
+    'ui.router'
+  ])
   .constant('appConfig', appConfig)
   .config(adalConfig)
-  .config(routesConfig);
+  .config(routeConfig);

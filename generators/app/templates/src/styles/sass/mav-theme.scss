@@ -1,0 +1,13 @@
+// Standaard Theme 
+@import "_variables.scss";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "partials/mav-theme/_custom-mav-theme.scss";
+// Onderdelen Standaard Theme 
+@import "partials/mav-theme/o365navbar";
+@import "partials/mav-theme/pagination-bootstrap3";
+@import "partials/mav-theme/sidebar";
+@import "partials/mav-theme/spinner";
+@import "partials/mav-theme/mdl2-icons"; // O365 icon set
+// Onderdelen Product specifiek 
+@import "partials/mav-product/toc";
+@import "partials/mav-product/custom-product-theme";

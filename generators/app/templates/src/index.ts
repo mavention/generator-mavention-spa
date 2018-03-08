@@ -1,30 +1,58 @@
-import * as angular from 'angular';
+import * as angular from 'angular'; // @types library
 
-import appConfig from './config';
+import 'angular-animate';
+import 'angular-cookies';
+import 'angular-resource';
+import 'angular-sanitize';
 
 import 'adal-angular/lib/adal'; // adal library
-import 'adal-angular/lib/adal-angular'; // angular library
-import * as adal from 'adal'; // @types library
+import 'adal-angular/lib/adal-angular'; // adal-angular library
 
-import adalConfig from './adalconfig';
+import '@uirouter/core';
+import '@uirouter/angularjs';
 
-import '@uirouter/angularjs'; // angular library
-import '@uirouter/angularjs/release/stateEvents';
-import * as uiRouter from 'angular-ui-router'; // @types library
-import routesConfig from './routes';
+import 'angular-translate';
+import 'angular-moment';
 
-import {hello} from './app/hello';
-import {about} from './app/about';
+import 'bootstrap';
+import 'angular-bootstrap';
 
-import './index.scss';
+// importing config functions
+import appConfig from './config/app.config';
+import adalConfig from './config/app.config.adal';
+import routeConfig from './config/app.config.routes';
+import translateConfig from './config/app.config.translate';
 
-export const app: string = 'app';
+// importing modules
+import { HomeModule } from './components/home/home.module';
+import { UserModule } from './components/user/user.module';
+import { AboutModule } from './components/about/about.module';
 
-angular
-  .module(app, ['AdalAngular', 'ui.router', 'ui.router.state.events'])
+// importing services
+import GraphService from './services/graph.service';
+
+// import styles
+import './styles/index.scss';
+
+import appRun from './app.run';
+
+angular.module('app', [
+  'ngAnimate',
+  'ngCookies',
+  'ngResource',
+  'ngSanitize',
+  'AdalAngular',
+  'angularMoment',
+  'pascalprecht.translate',
+  'ui.router',
+  // modules
+  HomeModule,
+  UserModule,
+  AboutModule,
+])
   .constant('appConfig', appConfig)
   .config(adalConfig)
-  .config(routesConfig)
-  // register environment in AngularJS as constant
-  .component('app', hello)
-  .component('about', about);
+  .config(routeConfig)
+  .config(translateConfig)
+  .service('graphService', GraphService)
+  .run(appRun);

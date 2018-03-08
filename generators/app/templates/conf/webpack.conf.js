@@ -7,38 +7,84 @@ const autoprefixer = require('autoprefixer');
 
 module.exports = {
   module: {
-    loaders: [
+    rules: [
+      {
+        test: require.resolve('jquery'),
+        use: [{
+          loader: 'expose-loader',
+          options: 'jQuery'
+        }]
+      },
+      {
+        test: require.resolve('../node_modules/adal-angular/lib/adal.js'),
+        use: [{
+          loader: 'expose-loader',
+          options: 'AuthenticationContext'
+        }]
+      },
+      {
+        test: /\.(gif|png|jpg|svg)$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            outputPath: 'images/',
+            useRelativePath: process.env.NODE_ENV === 'production'
+          }
+        }]
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf)$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            outputPath: 'fonts/',
+            useRelativePath: process.env.NODE_ENV === 'production'
+          }
+        }]
+      },
       {
         test: /\.json$/,
-        loaders: [
+        use: [
           'json-loader'
         ]
       },
       {
         test: /\.ts$/,
         exclude: /node_modules/,
-        loader: 'tslint-loader',
-        enforce: 'pre'
-      },
-      {
-        test: /\.(css|scss)$/,
-        loaders: [
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-          'postcss-loader'
+        use: [
+          'ng-annotate-loader'
         ]
       },
       {
         test: /\.ts$/,
         exclude: /node_modules/,
-        loaders: [
+        use: 'tslint-loader',
+        enforce: 'pre'
+      },
+      {
+        test: /\.(css|scss)$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [autoprefixer]
+            }
+          }
+        ]
+      },
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        use: [
           'ts-loader'
         ]
       },
       {
         test: /\.html$/,
-        loaders: [
+        use: [
           'html-loader'
         ]
       }
@@ -47,8 +93,12 @@ module.exports = {
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.ProvidePlugin({
+      jQuery: 'jquery'
+    }),
     new HtmlWebpackPlugin({
       excludeChunks: ['frameRedirect'],
+      filename: 'index.html',
       template: conf.path.src('index.html')
     }),
     new HtmlWebpackPlugin({
@@ -58,7 +108,6 @@ module.exports = {
     }),
     new webpack.LoaderOptionsPlugin({
       options: {
-        postcss: () => [autoprefixer],
         resolve: {},
         ts: {
           configFile: 'tsconfig.json'
@@ -84,7 +133,7 @@ module.exports = {
     ]
   },
   entry: {
-    index: `./${conf.path.src('index')}`,
-    frameRedirect: `./${conf.path.src('frameRedirect')}`
+    index: [`./${conf.path.src('index')}`],
+    frameRedirect: [`./${conf.path.src('frameRedirect')}`]
   }
 };

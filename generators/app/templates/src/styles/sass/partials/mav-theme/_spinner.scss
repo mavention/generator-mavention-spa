@@ -1,0 +1,258 @@
+/* spinner */
+
+.app-spinner {
+    &.loading {
+        float: left;
+        border-radius: 50%;
+        margin: 10px 5px 10px 0px;
+        width: 20px;
+        height: 20px;
+        border: 3px solid fade($primary, 10%);
+        border-top-color: $primary;
+        animation: spin 1s infinite linear;
+        &.loading-primary {
+            border-color: fade($primary, 30%);
+            border-top-color: $primary;
+        }
+        &.loading-info {
+            border-color: fade($primary, 30%);
+            border-top-color: $primary;
+        }
+        &.loading-success {
+            border-color: fade($primary, 30%);
+            border-top-color: $primary;
+        }
+        &.loading-warning {
+            border-color: fade($primary, 30%);
+            border-top-color: $primary;
+        }
+        &.loading-danger {
+            border-color: fade($primary, 30%);
+            border-top-color: $primary;
+        }
+    }
+    &.pulse {
+        float: left;
+        position: relative;
+        width: 5px;
+        height: 20px;
+        margin: 10px 15px 10px 10px;
+        background: fade($primary, 10%);
+        animation: pulse 750ms infinite;
+        animation-delay: 250ms;
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            display: block;
+            height: 12px;
+            width: 5px;
+            background: fade($primary, 10%);
+            top: 50%;
+            transform: translateY(-50%);
+            animation: pulse 750ms infinite;
+        }
+        &:before {
+            left: -10px;
+        }
+        &:after {
+            left: 10px;
+            animation-delay: 250ms;
+        }
+        &.pulse-primary {
+            background: $primary;
+            &:before,
+            &:after {
+                background: $primary;
+            }
+        }
+        &.pulse-info {
+            background: $primary;
+            &:before,
+            &:after {
+                background: $primary;
+            }
+        }
+        &.pulse-success {
+            background: $primary;
+            &:before,
+            &:after {
+                background: $primary;
+            }
+        }
+        &.pulse-warning {
+            background: $primary;
+            &:before,
+            &:after {
+                background: $primary;
+            }
+        }
+        &.pulse-danger {
+            background: $primary;
+            &:before,
+            &:after {
+                background: $primary;
+            }
+        }
+    }
+    &.scaleout {
+        float: left;
+        margin: 10px 5px 10px 0px;
+        width: 20px;
+        height: 20px;
+        background-color: $primary;
+        border-radius: 100%;
+        -webkit-animation: scaleout 1s infinite ease-in-out;
+        animation: scaleout 1s infinite ease-in-out;
+        &.scaleout-primary {
+            background-color: $primary
+        }
+        &.scaleout-info {
+            background-color: $primary;
+        }
+        &.scaleout-success {
+            background-color: $primary;
+        }
+        &.scaleout-warning {
+            background-color: $primary;
+        }
+        &.scaleout-danger {
+            background-color: $primary;
+        }
+    }
+    &.rotating {
+        position: relative;
+        float: left;
+        width: 20px;
+        height: 20px;
+        margin: 10px 5px 10px 0px;
+        animation: rotate 1.4s infinite ease-in-out, background 1.4s infinite ease-in-out alternate;
+    }
+    &.snake {
+        position: relative;
+        float: left;
+        width: 20px;
+        height: 20px;
+        margin: 10px 5px 10px 0px;
+        border: 3px solid $primary;
+        border-right-color: transparent;
+        border-radius: 50%;
+        animation: spin 1s infinite linear;
+    }
+    &.pulsate {
+        position: relative;
+        float: left;
+        width: 20px;
+        height: 20px;
+        margin: 10px 5px 10px 0px;
+        border: 3px solid $primary;
+        border-radius: 50%;
+        animation: pulsate 1s infinite linear;
+    }
+}
+
+.btn {
+    >.app-spinner {
+        margin: 4px 10px 4px 0px;
+    }
+}
+
+@-webkit-keyframes scaleout {
+    0% {
+        -webkit-transform: scale(0)
+    }
+    100% {
+        -webkit-transform: scale(1.0);
+        opacity: 0;
+    }
+}
+
+@keyframes scaleout {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    100% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+        opacity: 0;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    50% {
+        background: $primary;
+    }
+}
+
+@keyframes pulsate {
+    0% {
+        transform: scale(.1);
+        opacity: 0.0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    }
+    50% {
+        transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+    }
+    100% {
+        transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+    }
+}
+
+@keyframes background {
+    0% {
+        background-color: ($primary, 10%);
+    }
+    50% {
+        background-color: ($primary, 60%);
+    }
+    100% {
+        background-color: ($primary, 100%);
+    }
+}
+
+.app-spinner.pulse.pulse-mav {
+    background: $primary;
+    &:before,
+    &:after {
+        background: ($primary, 30%);
+    }
+}
+
+.app-spinner-text {
+    line-height: 40px;
+    >strong {
+        padding-left: 5px;
+    }
+}
+
+.app-spinner-icon {
+    width: 78px;
+    margin: auto;
+}
+
+.spinner-center {
+    width: 35px;
+    margin: auto;
+}

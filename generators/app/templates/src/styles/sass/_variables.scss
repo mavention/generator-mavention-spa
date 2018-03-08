@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@font-face {
+    font-family: "SegoeUI";
+    src: url("fonts/segoeui-semilight.woff2") format('woff');
+}
+
+
+/*colors*/
+
+$blue: #007bff !default;
+$indigo: #6610f2 !default;
+$purple: #715ea4 !default;
+$pink: #ed6da6 !default;
+$red: #dc3545 !default;
+$orange: #fd7e14 !default;
+$yellow: #ffc107 !default;
+$green: #28a745 !default;
+$teal: #20c997 !default;
+$cyan: #26bcea !default;
+$grey: #99979c !default;
+$light-grey: rgba(128,
+128,
+128,
+.2);
+$primary: $purple !default;
+$secondary: $pink !default;
+$success: $cyan !default;
+$info: $cyan !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$body-color: #444;
+$link-color:$pink;
+$link-hover-color:$cyan;
+// stylelint-disable
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+/*font*/
+
+$font-family-sans-serif: "Roboto";
+
+/* borders */
+
+$border-radius: 0 !default;
+$border-radius-lg: 0!default;
+$border-radius-sm: 0 !default;
+
+/* buttons */
+
+.btn {
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: $success !important;
+    border-color: $success !important;
+}
+
+.btn-secondary:hover {
+    background-color: $success !important;
+    border-color: $success !important;
+}
+
+$jumbotron-padding: 1.5rem !default;
+$jumbotron-bg: white !default;
+
+/* input */
+
+$input-bg:$gray-100 !default;
+$input-focus-bg: $white !default;
+
+/* table */
+
+$table-cell-padding: .5rem !default;
+$table-cell-padding-sm: .2rem !default;
