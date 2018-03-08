@@ -5,7 +5,7 @@
 
   // Tenant Url, example.onmicrosoft.com
   window.__appConfig.tenant = '<%- tenantName %>';
-
+  
   // Application Id of the Azure AD App
   window.__appConfig.appId = '<%- appId %>';
 

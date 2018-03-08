@@ -9,6 +9,7 @@ module.exports = function () {
       ]
     },
     open: false,
-    https: true
+    https: true,
+    port: 9000
   };
 };

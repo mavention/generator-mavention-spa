@@ -1,17 +1,118 @@
 <!doctype html>
 <html>
-  <head>
-    <base href="/">
-    <meta charset="utf-8">
-    <title>Mavention</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="https://www.mavention.nl/wp-content/uploads/2016/12/favicon-01.png" />
-  </head>
 
-  <body ng-app="app">
-    <ui-view></ui-view>
-    <script type="text/javascript" src="web.config.js"></script>
-    <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.15/js/adal.min.js"></script>
-  </body>
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <title>Mavention</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="./styles/images/favicon.png" />
+</head>
+
+<body ng-app="app" ng-strict-di>
+  <div ng-class="pageAnimationClass" class="app app-loaded">
+    <header class="navbar bg-primary fixed-top o365">
+      <div class="container-fluid">
+        <div>
+          <span class="o365-apps">
+            <a href="https://portal.office.com" class="btn btn-primary btn-lg o365-button apps">
+              <i class="mdl2-2 mdl2-2-Waffle"></i>
+            </a>
+          </span>
+          <span class="o365-title" translate="Index.Title"></span>
+          <span class="o365-subtitle" translate="Index.SubTitle"></span>
+        </div>
+        <span class="o365-logo">
+          <a href="https://portal.office.com">
+            <img src="./styles/images/mavention_logo.png">
+          </a>
+        </span>
+        <div class="dropdown">
+          <span class="btn-group o365-settings">
+            <button class="btn btn-lg o365-button" type="button" id="dropdownSettingsButton" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              <i class="mdl2 mdl2-settings"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownSettingsButton">
+                <h6 translate="Index.Dropdown.Languages" class="dropdown-header"></h6>
+                <a href="#" ng-click="setLanguage('en')" class="dropdown-item">
+                  <span translate="Index.Dropdown.English"></span>
+                </a>
+                <a href="#" ng-click="setLanguage('nl')" class="dropdown-item">
+                  <span translate="Index.Dropdown.Dutch"></span>
+                </a>
+            </div>
+          </span>
+          <span class="o365-question">
+            <a ui-sref="about" class="btn btn-primary btn-lg o365-button">
+              <i class="mdl2 mdl2-help"></i>
+            </a>
+          </span>
+          <span class="btn-group o365-bio">
+            <button class="btn btn-primary btn-o365-bio" type="button" id="dropdownBioButton" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              <span class="o365-name" ng-bind="userInfo.profile.name"></span>
+              <img ng-src="{{pictureUrl}}" src="./styles/images/person_placeholder.png" class="rounded-circle">
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownBioButton">
+              <a href="https://portal.office.com/account/" target="_blank" class="dropdown-item">
+                <span translate="Index.Dropdown.MyAccount"></span>
+              </a>
+              <a href="#" ng-click="logout()" class="dropdown-item">
+                <span translate="Index.Dropdown.Logout"></span>
+              </a>
+            </div>
+          </span>
+        </div>
+    </header>
+    <div class="wrapper">
+      <nav id="sidebar" ng-class="{active: expandedMenu}">
+        <ul class="sidebarnav">
+          <li>
+            <a ui-sref="home" ui-sref-active="active">
+              <i class="mdl2 mdl2-home"></i>
+              <span translate="Index.Menu.Home"></span>
+            </a>
+          </li>
+          <li>
+            <a ui-sref="user" ui-sref-active="active">
+              <i class="mdl2 mdl2-admin"></i>
+              <span translate="Index.Menu.User"></span>
+            </a>
+          </li>
+        </ul>
+        <ul class="sidebarCollapse">
+          <li>
+            <a id="sidebarCollapse" ng-click="toggleMenu()" class="btn btn-outline-primary btn-block" style="border:none">
+              <span style="display:block;visibility:hidden">&nbsp;</span>
+              <i class="mdl2 mdl2-scroll-chevron-left-legacy arrow-left"></i>
+              <i class="mdl2 mdl2-scroll-chevron-right-legacy arrow-right"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div id="content" ng-class="{active: expandedMenu}">
+        <div class="container-fluid">
+          <div class="row">
+            <main class="col-md-10 py-md-3 pl-md-5">
+              <div ui-view></div>
+            </main>
+            <div class="col-md-2">
+              <div class="bd-toc">
+                <div class="toc section-nav"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!--Load the config first!-->
+    <script src="web.config.js"></script>
+
+</body>
+
 </html>

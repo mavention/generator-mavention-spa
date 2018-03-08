@@ -1,7 +1,0 @@
-  beforeEach(module('app', $provide => {
-    $provide.factory('<%- componentName %>', () => {
-      return {
-        templateUrl: 'app/<%- name %>.html'
-      };
-    });
-  }));
