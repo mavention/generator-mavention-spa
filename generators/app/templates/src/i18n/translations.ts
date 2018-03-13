@@ -3,32 +3,32 @@ import nl_dictionary from './nl_NL.dictionary';
 
 const structure = {
     Index: {
-        Title: '@:Dictonary.AppTitle',
-        SubTitle: '@:Dictonary.AppSubTitle',
+        Title: '@:Dictionary.AppTitle',
+        SubTitle: '@:Dictionary.AppSubTitle',
         Menu: {
-            Home: '@:Dictonary.Home',
-            User: '@:Dictonary.User',
+            Home: '@:Dictionary.Home',
+            User: '@:Dictionary.User',
         },
         Dropdown: {
-            Languages: '@:Dictonary.Languages',
-            English: '@:Dictonary.English',
-            Dutch: '@:Dictonary.Dutch',
-            About: '@:Dictonary.About',
-            MyAccount: '@:Dictonary.MyAccount',
-            Logout: '@:Dictonary.Logout',
+            Languages: '@:Dictionary.Languages',
+            English: '@:Dictionary.English',
+            Dutch: '@:Dictionary.Dutch',
+            About: '@:Dictionary.About',
+            MyAccount: '@:Dictionary.MyAccount',
+            Logout: '@:Dictionary.Logout',
         }
     },
     Home: {
-        Header: '@:Dictonary.Home',
-        Description: '@:Dictonary.HomeDescription',
+        Header: '@:Dictionary.Home',
+        Description: '@:Dictionary.HomeDescription',
     },
     User: {
-        Header: '@:Dictonary.User',
-        Description: '@:Dictonary.UserDescription',
+        Header: '@:Dictionary.User',
+        Description: '@:Dictionary.UserDescription',
     },
     About: {
-        Header: '@:Dictonary.About',
-        Description: '@:Dictonary.AboutDescription',
+        Header: '@:Dictionary.About',
+        Description: '@:Dictionary.AboutDescription',
     },
 };
 

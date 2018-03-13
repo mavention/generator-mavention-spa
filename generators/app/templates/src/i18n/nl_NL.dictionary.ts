@@ -1,5 +1,5 @@
 const nl_dictionary = {
-    Dictonary: {
+    Dictionary: {
         About: 'Over',
         AboutDescription: 'Dit is een SPA gegenereerd door de Mavention SPA Yeoman generator.',
         AppSubTitle: 'SPA',
