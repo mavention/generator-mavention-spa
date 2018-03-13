@@ -25,7 +25,7 @@ yo mavention-spa
 
 ## License
 
-MIT © [Robert Jaakke](https://www.mavention.nl)
+MIT © [Mavention](https://www.mavention.nl)
 
 
 [npm-image]: https://badge.fury.io/js/generator-mavention-spa.svg
