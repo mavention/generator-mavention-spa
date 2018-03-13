@@ -2,8 +2,7 @@ const nl_dictionary = {
     Dictionary: {
         About: 'Over',
         AboutDescription: 'Dit is een SPA gegenereerd door de Mavention SPA Yeoman generator.',
-        AppSubTitle: 'SPA',
-        AppTitle: 'Mavention',
+        AppTitle: '<%- appTitle %>',
         Dutch: 'Nederlands',
         English: 'Engels',
         Home: 'Start',

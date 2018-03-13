@@ -13,6 +13,11 @@ module.exports = class extends Generator {
     const prompts = [
       {
         type: 'input',
+        name: 'appTitle',
+        message: 'What is the title of the SPA?'
+      },
+      {
+        type: 'input',
         name: 'tenantName',
         message: 'What is the tenant domainname of the app registration?'
       },
@@ -34,6 +39,24 @@ module.exports = class extends Generator {
     this.fs.copy(this.templatePath('**/.*'), this.destinationPath());
 
     this.fs.copyTpl(
+      this.templatePath('src/i18n/en_US.dictionary.ts'),
+      this.destinationPath('src/i18n/en_US.dictionary.ts'),
+      {
+        appTitle: this.props.appTitle,
+        appSubTitle: this.props.appSubTitle
+      }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('src/i18n/nl_NL.dictionary.ts'),
+      this.destinationPath('src/i18n/nl_NL.dictionary.ts'),
+      {
+        appTitle: this.props.appTitle,
+        appSubTitle: this.props.appSubTitle
+      }
+    );
+
+    this.fs.copyTpl(
       this.templatePath('src/web.config.js'),
       this.destinationPath('src/web.config.js'),
       {
@@ -41,6 +64,15 @@ module.exports = class extends Generator {
         appId: this.props.appId
       }
     );
+
+    // Save the configuration
+    this.config.set({
+      appTitle: this.props.appTitle,
+      tenantName: this.props.tenantName,
+      appId: this.props.appId
+    });
+
+    this.config.save();
   }
 
   install() {

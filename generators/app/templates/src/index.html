@@ -21,7 +21,7 @@
             </a>
           </span>
           <span class="o365-title" translate="Index.Title"></span>
-          <span class="o365-subtitle" translate="Index.SubTitle"></span>
+          <span class="o365-subtitle" translate="{{$state.current.params.translationId}}"></span>
         </div>
         <span class="o365-logo">
           <a href="https://portal.office.com">
@@ -92,7 +92,6 @@
           </li>
         </ul>
       </nav>
-
       <div id="content" ng-class="{active: expandedMenu}">
         <div class="container-fluid">
           <div class="row">
@@ -105,14 +104,10 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
-
     <!--Load the config first!-->
     <script src="web.config.js"></script>
-
 </body>
-
 </html>

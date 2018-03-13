@@ -1,9 +1,11 @@
 import { default as AdalAuthenticationService, UserInfo } from 'adal-angular';
-import { StateService } from '@uirouter/angularjs';
+import { StateService, StateParams } from '@uirouter/angularjs';
 import GraphService from './services/graph.service';
 import 'angular-translate';
 
 export interface IAppRootScope extends ng.IRootScopeService {
+    $state: StateService;
+    $stateParams: StateParams;
     userInfo: UserInfo;
     pictureUrl: string;
     expandedMenu: boolean;
@@ -21,10 +23,17 @@ export default function appRun(
     $cookies: ng.cookies.ICookiesService,
     $translate: ng.translate.ITranslateService,
     $state: StateService,
+    $stateParams: StateParams,
     $log: ng.ILogService,
     adalAuthenticationService: AdalAuthenticationService,
     graphService: GraphService
 ) {
+    // it's very handy to add references to $state and $stateParams to the $rootScope
+    // so that you can access them from any scope within your applications.For example,
+    // <li ng-class="{ active: $state.includes('contacts.list') }"> will set the <li>
+    // to active whenever 'contacts.list' or one of its decendents is active.
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
 
     // adal login method
     $rootScope.login = () => {

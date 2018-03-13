@@ -16,16 +16,25 @@ export default function routesConfig($stateProvider: StateProvider, $urlRouterPr
     .state('home', {
       url: '/',
       requireADLogin: false,
-      component: 'home'
+      component: 'home',
+      params: {
+        translationId: 'Home.Header'
+      },
     } as IAdalState)
     .state('user', {
       url: '/user',
       requireADLogin: true,
-      component: 'user'
+      component: 'user',
+      params: {
+        translationId: 'User.Header'
+      },
     } as IAdalState)
     .state('about', {
       url: '/about',
       requireADLogin: false,
-      component: 'about'
+      component: 'about',
+      params: {
+        translationId: 'About.Header'
+      },
     } as IAdalState);
 }
