@@ -4,7 +4,6 @@ import nl_dictionary from './nl_NL.dictionary';
 const structure = {
     Index: {
         Title: '@:Dictionary.AppTitle',
-        SubTitle: '@:Dictionary.AppSubTitle',
         Menu: {
             Home: '@:Dictionary.Home',
             User: '@:Dictionary.User',
