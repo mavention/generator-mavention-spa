@@ -75,12 +75,12 @@ export default function appRun(
     };
 
     // get menu expand settings, default to true if undefined
-    const menuExpand = $cookies.get('MenuExpanded');
+    const menuExpand = $cookies.getObject('MenuExpanded');
 
     if (menuExpand === undefined) {
-        $rootScope.expandedMenu = true;
-    } else {
         $rootScope.expandedMenu = false;
+    } else {
+        $rootScope.expandedMenu = menuExpand as boolean;
     }
 
     // menu toggle method
