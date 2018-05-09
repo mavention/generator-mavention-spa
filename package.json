@@ -1,65 +1,49 @@
 {
   "name": "generator-mavention-spa",
   "version": "0.9.0",
-  "description": "Yeoman Mavention generator to scaffold a SPA with Angular 1 written in ES6 (Babel), TypeScript through Webpack including tools Gulp 4, ESLint, Browsersync and Karma",
+  "description":
+    "Yeoman Mavention generator to scaffold a SPA with Angular 1 written in ES6 (Babel), TypeScript through Webpack including tools Gulp 4, ESLint, Browsersync and Karma",
   "homepage": "https://www.mavention.nl",
   "author": {
     "name": "Robert Jaakke",
     "email": "robert.jaakke@mavention.nl"
   },
-  "files": [
-    "generators"
-  ],
+  "files": ["generators"],
   "main": "generators/index.js",
-  "keywords": [
-    "spa",
-    "angular",
-    "webpack",
-    "gulp",
-    "yeoman-generator"
-  ],
+  "keywords": ["spa", "angular", "webpack", "gulp", "yeoman-generator"],
   "devDependencies": {
     "yeoman-test": "^1.7.0",
-    "yeoman-assert": "^3.1.0",
-    "nsp": "^2.6.3",
-    "eslint": "^4.1.0",
-    "prettier": "^1.7.0",
+    "yeoman-assert": "^3.1.1",
+    "nsp": "^3.2.1",
+    "eslint": "^4.19.1",
+    "prettier": "^1.12.0",
     "husky": "^0.14.3",
-    "lint-staged": "^4.2.1",
-    "eslint-config-prettier": "^2.4.0",
-    "eslint-plugin-prettier": "^2.2.0",
-    "eslint-config-xo": "^0.18.2",
-    "jest": "^22.0.6"
+    "lint-staged": "^7.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-config-xo": "^0.22.1",
+    "jest": "^22.4.3"
   },
   "dependencies": {
-    "yeoman-generator": "^2.0.1",
-    "chalk": "^2.1.0",
-    "yosay": "^2.0.1"
+    "yeoman-generator": "^2.0.5",
+    "chalk": "^2.4.1",
+    "yosay": "^2.0.2"
   },
   "jest": {
     "testEnvironment": "node"
   },
   "scripts": {
-    "prepublish": "nsp check",
+    "prepublishOnly": "nsp check",
     "pretest": "eslint .",
     "precommit": "lint-staged",
     "test": "jest"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.json": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.js": ["eslint --fix", "git add"],
+    "*.json": ["prettier --write", "git add"]
   },
   "eslintConfig": {
-    "extends": [
-      "xo",
-      "prettier"
-    ],
+    "extends": ["xo", "prettier"],
     "env": {
       "jest": true,
       "node": true
@@ -73,9 +57,7 @@
         }
       ]
     },
-    "plugins": [
-      "prettier"
-    ]
+    "plugins": ["prettier"]
   },
   "repository": "mavention/generator-mavention-spa",
   "license": "MIT"
